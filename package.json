@@ -1,0 +1,22 @@
+{
+  "name": "inventer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/alive1541/inventer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alive1541/inventer/issues"
+  },
+  "homepage": "https://github.com/alive1541/inventer#readme",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}

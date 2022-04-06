@@ -1,5 +1,5 @@
 import { createClient } from 'redis'
-import config from '../../inventer-svc-config/src'
+import config from '@inventer/svc-config'
 
 export class Redis {
 	private static inst: Redis
