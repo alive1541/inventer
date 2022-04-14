@@ -1,0 +1,59 @@
+Arguments: 
+  /Users/didi/.nvm/versions/node/v14.18.1/bin/node /Users/didi/.nvm/versions/node/v14.18.1/bin/yarn
+
+PATH: 
+  /Users/didi/.cargo/bin:/usr/local/opt/mongodb-community@3.4/bin:/usr/local/opt/mongodb-community@3.4/bin:/Applications/XAMPP/bin:/Users/didi/.nvm/versions/node/v14.18.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin:/Applications/Docker.app/Contents/Resources/bin:/usr/local/go/bin:/Users/yuanzhiying/Library/flutter/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  14.18.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.npmjs.org/js-yaml: ETIMEDOUT
+      at Timeout._onTimeout (/Users/didi/.nvm/versions/node/v14.18.1/lib/node_modules/yarn/lib/cli.js:141543:19)
+      at listOnTimeout (internal/timers.js:557:17)
+      at processTimers (internal/timers.js:500:7)
+
+npm manifest: 
+  {
+    "name": "@inventer/loader",
+    "version": "0.0.2",
+    "description": "",
+    "main": "es/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "skedo": {
+      "type": "lib",
+      "devLinks": [
+        "@skedo/request",
+        "@skedo/meta",
+        "@skedo/utils"
+      ]
+    },
+    "dependencies": {
+      "js-yaml": "^4.1.0",
+      "jsonschema": "^1.4.0",
+      "ramda": "^0.27.1",
+      "url": "^0.11.0"
+    },
+    "devDependencies": {
+      "@babel/runtime": "^7.15.4",
+      "@types/js-yaml": "^4.0.2",
+      "@types/ramda": "^0.27.44",
+      "url": "^0.11.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

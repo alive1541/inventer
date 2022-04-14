@@ -6,7 +6,6 @@
 		"downlevelIteration": true,
 		"noImplicitThis": true,
 		"module": "commonjs",
-		"outDir": "es",
 		"declaration": true
 	}
 }

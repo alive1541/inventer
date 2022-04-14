@@ -7,9 +7,6 @@
 		"downlevelIteration": true,
 		"noImplicitThis": true,
 		"declaration": true,
-		"declarationDir": "es",
 		"outDir": "es",
-		"rootDir": "src"
-		
 	}
 }

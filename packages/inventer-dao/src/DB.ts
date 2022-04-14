@@ -1,5 +1,5 @@
 import { Dialect, Sequelize } from 'sequelize'
-import config from '../../inventer-svc-config/src'
+import config from '@inventer/svc-config'
 
 export default class DB {
 	static sequelize: Sequelize
