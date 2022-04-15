@@ -5,6 +5,7 @@
 	"dependencies": {
 		"@ant-design/icons": "^4.6.2",
 		"@babel/core": "7.12.3",
+		"@inventer/utils": "^0.0.2",
 		"@inventer/loader": "^0.0.2",
 		"@inventer/meta": "^0.0.1",
 		"@monaco-editor/react": "^4.2.2",
