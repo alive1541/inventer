@@ -1,7 +1,7 @@
 
 
 export enum Topic {
-	RemoteComponentLoaded,
+	RemoteComponentsLoaded,
 	EditMode,
 	PropertyModelUpdated,
 	// 

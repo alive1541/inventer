@@ -1,6 +1,6 @@
 declare type FN = (...args: Array<any>) => void
 
-export function throttle(fn: FN, interval = 13, defValue: any) {
+export function throttle(fn: FN, interval = 13, defValue: any = null) {
 	let open = true
 
 

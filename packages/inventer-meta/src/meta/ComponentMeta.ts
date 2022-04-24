@@ -1,5 +1,6 @@
-import { BoxDescriptorInput } from "../standard.types"
+import { BoxDescriptorInput, JsonNode } from "../standard.types"
 import { BoxDescriptor } from "../BoxDescriptor"
+import { Map as ImmutableMap, fromJS } from 'immutable'
 
 export interface PropConfig {
 	name: string,
@@ -53,7 +54,7 @@ export class ComponentMeta {
 	defaultProps: any
 	imageUrl: string
 	// componentType: 'react' | 'vue'
-	// props: {[name: string] : PropMeta}
+	// props: { [name: string]: PropMeta }
 	// groups: Array<GroupMeta>
 	// cache: KeyValueCache<any>
 	constructor(config: ComponentMetaConfig) {
@@ -69,9 +70,42 @@ export class ComponentMeta {
 		this.imageUrl = config.imageUrl
 		//     this.componentType = config.componentType || 'react'
 		//     this.editor = config.editor
-		//     this.props = {}
+		// this.props = {}
 		//     this.groups = []
 
+	}
+
+	createDataFromJson(json: JsonNode): ImmutableMap<string, any> {
+		const box = new BoxDescriptor(json.box, this)
+		return fromJS({
+			...json,
+			box
+		}) as ImmutableMap<string, any>
+	}
+
+	createData(id: number, box: BoxDescriptor | null) {
+		let data = ImmutableMap({
+			id,
+			parent: null,
+			name: this.name,
+			group: this.group,
+			style: ImmutableMap<string, any>(),
+			children: [],
+			allowDrag: true,
+			isMoving: false,
+			editMode: false,
+			passProps: fromJS(this.defaultProps || {}),
+			box
+		})
+
+		data = data.update(
+			"style",
+			(style: any) => {
+				const metaStyle = fromJS(this.style) as ImmutableMap<string, any>
+				return style.merge(metaStyle)
+			}
+		)
+		return data
 	}
 
 }

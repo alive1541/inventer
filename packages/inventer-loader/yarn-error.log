@@ -14,17 +14,24 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.npmjs.org/js-yaml: ETIMEDOUT
-      at Timeout._onTimeout (/Users/didi/.nvm/versions/node/v14.18.1/lib/node_modules/yarn/lib/cli.js:141543:19)
-      at listOnTimeout (internal/timers.js:557:17)
-      at processTimers (internal/timers.js:500:7)
+  Error: https://registry.npmjs.org/@inventer%2fmeta: Not found
+      at Request.params.callback [as _callback] (/Users/didi/.nvm/versions/node/v14.18.1/lib/node_modules/yarn/lib/cli.js:67029:18)
+      at Request.self.callback (/Users/didi/.nvm/versions/node/v14.18.1/lib/node_modules/yarn/lib/cli.js:140883:22)
+      at Request.emit (events.js:400:28)
+      at Request.<anonymous> (/Users/didi/.nvm/versions/node/v14.18.1/lib/node_modules/yarn/lib/cli.js:141855:10)
+      at Request.emit (events.js:400:28)
+      at IncomingMessage.<anonymous> (/Users/didi/.nvm/versions/node/v14.18.1/lib/node_modules/yarn/lib/cli.js:141777:12)
+      at Object.onceWrapper (events.js:519:28)
+      at IncomingMessage.emit (events.js:412:35)
+      at endReadableNT (internal/streams/readable.js:1334:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
 
 npm manifest: 
   {
     "name": "@inventer/loader",
     "version": "0.0.2",
     "description": "",
-    "main": "es/index.js",
+    "main": "src/index.ts",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -39,6 +46,10 @@ npm manifest:
       ]
     },
     "dependencies": {
+      "@inventer/meta": "^0.0.1",
+      "@inventer/utils": "^0.0.2",
+      "@inventer/svc-config": "^1.0.0",
+      "@types/node": "^17.0.23",
       "js-yaml": "^4.1.0",
       "jsonschema": "^1.4.0",
       "ramda": "^0.27.1",

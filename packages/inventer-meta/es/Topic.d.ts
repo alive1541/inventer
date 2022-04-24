@@ -1,0 +1,23 @@
+export declare enum Topic {
+    RemoteComponentsLoaded = 0,
+    EditMode = 1,
+    PropertyModelUpdated = 2,
+    Resized = 3,
+    PropertyChanged = 4,
+    GeneralMovingEvent = 5,
+    NewNodeAdded = 6,
+    NodeMoved = 7,
+    NodeChildrenChanged = 8,
+    SelectionChanged = 9,
+    AssistLinedChanged = 10,
+    MouseUpEventPass = 11,
+    MouseMoveEventPass = 12,
+    NodePropUpdated = 13,
+    NodeGapIndexChanged = 14,
+    ShadowReceiverChanged = 15,
+    MemorizedDataChanged = 16,
+    ExternalEventNotify = 17,
+    Initialize = 18,
+    Loaded = 19,
+    ContextMessage = 20
+}

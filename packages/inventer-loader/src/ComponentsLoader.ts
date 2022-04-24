@@ -1,6 +1,6 @@
-import Emiter from '@inventer/utils'
+import { Emiter } from '@inventer/utils'
 import { ComponentMeta, Topic, ComponentMetaConfig, metaSchema } from '@inventer/meta'
-import R from 'ramda'
+import * as R from 'ramda'
 import { Validator } from 'jsonschema'
 
 function loadDefault() {

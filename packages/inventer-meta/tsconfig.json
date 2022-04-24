@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "es",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "outDir" : "./es",
     "allowJs": false,
-    "rootDir" : "src",
     "downlevelIteration": true,
     "esModuleInterop": true,
     "noImplicitAny": true,

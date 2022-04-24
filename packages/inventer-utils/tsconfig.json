@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "src",
+    "outDir": "es",
     "lib": [
       "dom",
       "dom.iterable",
@@ -14,7 +14,9 @@
     "noImplicitAny": true,
     "strict": true,
     "moduleResolution": "node",
-    "declaration": true,
+    "declaration": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }
