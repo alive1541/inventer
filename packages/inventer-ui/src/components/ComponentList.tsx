@@ -7,7 +7,7 @@ import { UIEvents, UIModel } from '../object/UIModel'
 
 interface ComponentListProps {
 	// editor: UIModel
-	editor: any
+	editor: UIModel
 }
 
 

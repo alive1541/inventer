@@ -2,16 +2,16 @@ import { Emiter } from '@inventer/utils'
 
 
 type StateTransferFunction = (...args: Array<any>) => void
-
-
-type RegFuncTypes<S, A> = (
+type RegFuncType<S, A> = (
 	from: S | S[],
 	to: S,
 	action: A,
 	fn: StateTransferFunction
 ) => void
-
-
+/**
+ * S : 状态 
+ * A : Action
+ */
 export default class StateMachine<
 	S extends number,
 	A extends number,
@@ -24,17 +24,19 @@ export default class StateMachine<
 		this.s = initialState
 		this.table = new Map()
 	}
+
 	private hash(s: S, a: A) {
 		return s + 10000 * a
 	}
-	public register(
+
+	public register = (
 		from: S | S[],
 		to: S,
 		action: A,
 		fn: StateTransferFunction
-	) {
+	) => {
 		if (Array.isArray(from)) {
-			from.forEach(f => {
+			from.forEach((f) => {
 				this.register(f, to, action, fn)
 			})
 			return
@@ -46,7 +48,7 @@ export default class StateMachine<
 		adjTable.set(action, [fn, to])
 	}
 
-	public describe = (desc: string, callback: ((f: RegFuncTypes<S, A>) => void)) => {
+	public describe = (desc: string, callback: ((f: RegFuncType<S, A>) => void)) => {
 		callback(this.register)
 	}
 
@@ -55,16 +57,22 @@ export default class StateMachine<
 		if (!adjTable) {
 			return false
 		}
+
 		if (!adjTable.has(action)) {
 			return false
 		}
+
 		const [fn, nextS] = adjTable.get(action)!
-		fn(...data)
+		fn(...data
+		)
 		this.s = nextS
 
+		// Try all auto actions
 		while (this.dispatch(0 as A, ...data));
+
 		return true
 	}
+
 	public underState(s: S) {
 		return this.s === s
 	}

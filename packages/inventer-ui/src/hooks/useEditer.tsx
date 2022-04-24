@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { JsonPage, Topic } from '@inventer/meta'
+import { JsonPage } from '@inventer/meta'
 import { ComponentsLoader } from '@inventer/loader'
 import { UIModel } from '../object/UIModel'
 
