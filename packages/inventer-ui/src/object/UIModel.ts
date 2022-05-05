@@ -6,6 +6,9 @@ import SelectionNew from "./Selection.new";
 import { ComponentsLoader } from "@inventer/loader";
 import { NodeSelector } from "./NodeSelector";
 import ResizerNew from "./Resizer.new";
+import PropertyEditor from './PropertyEditor'
+import PageExporter from './PageExporter'
+
 export enum UIStates {
 	Start,
 	StartAdd,
@@ -41,7 +44,7 @@ export class UIModel extends StateMachine<UIStates, UIEvents, Topic> {
 	startSelVer: number
 	selection: SelectionNew
 	contentHash: string
-	// propertyEditor: PropertyEditor
+	propertyEditor: PropertyEditor
 	page: Page
 	dropCompoentMeta: ComponentMeta | null = null
 	dropComponentPosition: [number, number] = [0, 0]
@@ -52,6 +55,7 @@ export class UIModel extends StateMachine<UIStates, UIEvents, Topic> {
 	constructor(json: JsonPage, pageName: string) {
 		super(UIStates.Start)
 		this.selection = new SelectionNew()
+		this.propertyEditor = new PropertyEditor(this)
 		this.page = new Page(pageName, json, ComponentsLoader.get())
 		this.root = this.page.root
 		this.ctrlDown = false
@@ -144,7 +148,6 @@ export class UIModel extends StateMachine<UIStates, UIEvents, Topic> {
 				}
 				if (receiver !== lastReceiver) {
 					if (lastReceiver) {
-						debugger
 						lastReceiver.emit(Topic.NodeGapIndexChanged, null)
 					}
 					lastReceiver = receiver
@@ -272,6 +275,27 @@ export class UIModel extends StateMachine<UIStates, UIEvents, Topic> {
 				}
 			)
 		})
+
+	}
+	public async save() {
+		const exporter = new PageExporter()
+		const json = exporter.exportToJSON(this.page.pageNode)
+		const text = JSON.stringify(json)
+		const contentHash = md5(text)
+		if (this.contentHash === contentHash) {
+			return
+		}
+		this.contentHash = contentHash
+
+
+		// const user = localStorage['x-user']
+		// const composedRemoteCall = compose(fileRemote.post1, pageRemote.put, (data) => {
+		// 	return [user, this.page.name, data]
+		// })
+
+		// await composedRemoteCall("/page", "json", text)
+
+		console.log('save', json);
 
 	}
 

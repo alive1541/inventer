@@ -28,6 +28,14 @@ const useEditer = (pageName: string) => {
 	useEffect(() => {
 		ComponentsLoader.get().load()
 
+		eval(`(function () {
+			'use strict';
+		
+			let a = 1;
+			let b = 2;
+			console.log('test codeless',a + b);
+		
+		})();`)
 		setEditor(new UIModel(json, pageName))
 	}, [])
 	return [editor]

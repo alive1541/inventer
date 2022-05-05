@@ -22,7 +22,7 @@ export function useDragNode(props: DragEvents): [DragNode, any] {
     onMouseDown: (e: MouseEvent) => {
       node.start(e)
     },
-    onMouseMove: (e: MouseEvent) => {
+    onMoargsseMove: (e: MouseEvent) => {
       if (node.dragging) {
         node.update(e)
         setVer(x => x + 1)
