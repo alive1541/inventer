@@ -14,6 +14,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __generator = (this && this.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
@@ -470,6 +481,14 @@ var Node = /** @class */ (function (_super) {
             }
             finally { if (e_2) throw e_2.error; }
         }
+    };
+    Node.prototype.toJSON = function (links) {
+        if (links === void 0) { links = {}; }
+        var data = this.getData().remove('parent');
+        var json = data.toJS();
+        var newJson = __assign(__assign({}, json), { box: json.box.toJson() });
+        newJson.children = this.getChildren().map(function (child) { return child.toJSON(links); });
+        return newJson;
     };
     return Node;
 }(InstanceData));

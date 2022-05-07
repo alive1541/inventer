@@ -2,7 +2,7 @@ import { Emiter, Rect } from '@inventer/utils';
 import { BoxDescriptor } from '../BoxDescriptor';
 import { Map as ImmutableMap } from 'immutable';
 import { ComponentMeta } from '../meta/ComponentMeta';
-import { NodeData } from '../standard.types';
+import { NodeData, JsonNode } from '../standard.types';
 import { Topic } from '../Topic';
 import { CordNew } from './Cord.new';
 import { MountPoint } from './MountPoint';
@@ -81,5 +81,6 @@ export declare class Node extends InstanceData {
     setReceiving(node: Node | null): void;
     findByName(name: string): Node | Node[];
     print(): void;
+    toJSON(links?: {}): JsonNode;
 }
 export {};

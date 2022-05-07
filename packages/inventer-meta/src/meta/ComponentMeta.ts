@@ -1,7 +1,21 @@
 import { BoxDescriptorInput, JsonNode } from "../standard.types"
 import { BoxDescriptor } from "../BoxDescriptor"
 import { Map as ImmutableMap, fromJS } from 'immutable'
+import { GroupMeta } from "./GroupMeta"
+import { PropMeta } from './PropMeta'
 
+
+export interface PropsEditorConfigure {
+	groups?: Array<GroupConfig>
+}
+
+export interface GroupConfig {
+	name: string,
+	title: string,
+	disabled: boolean,
+	style: any,
+	props: Array<PropConfig>
+}
 export interface PropConfig {
 	name: string,
 	props?: any,
@@ -23,7 +37,7 @@ export interface ComponentMetaConfig {
 	image: string,
 	title: string,
 	box: BoxDescriptorInput,
-	// editor: PropsEditorConfigure,
+	editor: PropsEditorConfigure,
 	description: string,
 	intrinsic?: boolean,
 	style?: any,
@@ -47,15 +61,15 @@ export class ComponentMeta {
 	image: string
 	title: string
 	box: BoxDescriptor
-	// editor: PropsEditorConfigure
+	editor: PropsEditorConfigure
 	intrinsic?: boolean
 	url?: string
 	style?: any
 	defaultProps: any
 	imageUrl: string
 	// componentType: 'react' | 'vue'
-	// props: { [name: string]: PropMeta }
-	// groups: Array<GroupMeta>
+	props: { [name: string]: PropMeta }
+	groups: Array<GroupMeta>
 	// cache: KeyValueCache<any>
 	constructor(config: ComponentMetaConfig) {
 		this.name = config.name
@@ -69,9 +83,19 @@ export class ComponentMeta {
 		this.defaultProps = config.defaultProps
 		this.imageUrl = config.imageUrl
 		//     this.componentType = config.componentType || 'react'
-		//     this.editor = config.editor
-		// this.props = {}
-		//     this.groups = []
+		this.editor = config.editor
+		this.props = {}
+		this.groups = []
+		if (config.editor && config.editor.groups) {
+			for (let group of config.editor.groups) {
+				this.groups.push(GroupMeta.of(group))
+				for (let prop of group.props || []) {
+					if (prop.name) {
+						this.props[prop.name] = new PropMeta(prop)
+					}
+				}
+			}
+		}
 
 	}
 

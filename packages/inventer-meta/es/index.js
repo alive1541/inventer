@@ -20,8 +20,8 @@ __exportStar(require("./instance/MountPoint"), exports);
 __exportStar(require("./Bridge"), exports);
 __exportStar(require("./Topic"), exports);
 __exportStar(require("./meta/ComponentMeta"), exports);
-// export * from './meta/GroupMeta'
-// export * from './meta/PropMeta'
+__exportStar(require("./meta/GroupMeta"), exports);
+__exportStar(require("./meta/PropMeta"), exports);
 __exportStar(require("./BoxDescriptor"), exports);
 __exportStar(require("./standard.types"), exports);
 __exportStar(require("./instance/Cord.new"), exports);

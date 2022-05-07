@@ -3,7 +3,7 @@ import { BoxDescriptor } from '../BoxDescriptor'
 import { fromJS, Map as ImmutableMap } from 'immutable'
 import { ComponentMeta } from '../meta/ComponentMeta'
 import { PropsMeta } from '../meta/PropsMeta'
-import { NodeData } from '../standard.types'
+import { NodeData, NodeInstanceJsonStructure, JsonNode } from '../standard.types'
 import { Topic } from '../Topic'
 import { CordNew } from './Cord.new'
 import { MountPoint } from './MountPoint'
@@ -478,13 +478,13 @@ export class Node extends InstanceData {
 		}
 	}
 
-	// toJSON(links = {}) {
-	// 	const data = this.getData().remove('parent')
-	// 	const json: Partial<NodeInstanceJsonStructure> = data.toJS()
-	// 	const newJson: any = { ...json, box: json.box!.toJson() }
-	// 	newJson.children = this.getChildren().map(child => child.toJSON(links))
-	// 	return newJson as JsonNode
-	// }
+	toJSON(links = {}) {
+		const data = this.getData().remove('parent')
+		const json: Partial<NodeInstanceJsonStructure> = data.toJS()
+		const newJson: any = { ...json, box: json.box!.toJson() }
+		newJson.children = this.getChildren().map(child => child.toJSON(links))
+		return newJson as JsonNode
+	}
 }
 
 

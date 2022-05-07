@@ -92,6 +92,7 @@ class ComponentsLoader extends utils_1.Emiter {
                 this.loadByName(group, name);
             }
             this.list = Object.values(metas).filter(meta => meta.intrinsic !== true);
+            // @ts-ignore
             this.emit(meta_1.Topic.RemoteComponentsLoaded);
         });
     }

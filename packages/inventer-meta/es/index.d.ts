@@ -3,6 +3,8 @@ export * from './instance/MountPoint';
 export * from './Bridge';
 export * from './Topic';
 export * from './meta/ComponentMeta';
+export * from './meta/GroupMeta';
+export * from './meta/PropMeta';
 export * from "./BoxDescriptor";
 export * from './standard.types';
 export * from './instance/Cord.new';

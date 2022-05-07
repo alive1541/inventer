@@ -62,6 +62,7 @@ export class ComponentsLoader extends Emiter<Topic> {
       this.loadByName(group, name)
     }
     this.list = Object.values(metas).filter(meta => meta.intrinsic !== true)
+    // @ts-ignore
     this.emit(Topic.RemoteComponentsLoaded)
   }
 }
